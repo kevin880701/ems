@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+  static const Color transparent = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color primaryBlack = Color(0xFF414141);
+  static const Color appPrimaryBlack = Color(0xFF434343);
+  static const Color darkGrey = Color(0xFF686666);
+  static const Color grey = Color(0xFF999999);
+  static const Color disableGrey = Color(0xFFD2D2D2);
+  static const Color borderGrey = Color(0xFFEAEAEA);
+  static const Color borderLightGrey = Color(0xFFF4F4F4);
+  static const Color modelLineBarGrey1 = Color(0xFF717171);
+  static const Color modelLineBarGrey2 = Color(0xFFA8A8A8);
+  static const Color modelLineBarGrey3 = Color(0xFFD4D4D4);
+  static const Color bgColor = Color(0xFFF6F6F6);
+  static const Color mask = Color(0x99000000);
+  static const Color appPrimaryBlue = Color(0xFF23578F);
+  static const Color primaryBlue = Color(0xFF214D7C);
+  static const Color lightBlue = Color(0xFF406EB1);
+  static const Color borderBlue = Color(0xFF426C98);
+  static const Color milkBlue = Color(0xFFEDF5FD);
+  static const Color green = Color(0xFF0A8534);
+  static const Color milkGreen = Color(0xFFE6F5EB);
+  static const Color orange = Color(0xFFF56716);
+  static const Color milkOrange = Color(0xFFFFEBD9);
+  static const Color red = Color(0xFFE83A3A);
+  static const Color lightRed = Color(0xFFFFE7E5);
+  static const Color lightGreen = Color(0xFF52C41A);
+  static const Color acerGreen = Color(0xFF58B505);
+  static const Color acerBgGreen = Color(0xFF7EC043);
+  static const Color chartYellow = Color(0xFFFFB800);
+  static const Color chartBlue = Color(0xFF4677BF);
+  static const Color chartWaterBlue = Color(0xFF1DB1C5);
+  static const Color chartPurple = Color(0xFFA259C5);
+  static const Color chartDarkPurple = Color(0xFF4A446C);
+  static const Color essGreen = Color(0xFFB1DFAD);
+  static const Color essBlue = Color(0xFFA6C4E3);
+  static const Color essOrange = Color(0xFFFFAA7A);
+}

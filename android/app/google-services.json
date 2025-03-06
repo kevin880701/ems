@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "39825301196",
+    "project_id": "ihouseems",
+    "storage_bucket": "ihouseems.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39825301196:android:c5e343cdc238c87ea8ec69",
+        "android_client_info": {
+          "package_name": "com.cwo.ihouseEMS"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39825301196-8dv101qdule7aarsi2tv42k36q88arh2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cwo.ihouseEMS",
+            "certificate_hash": "d9ff8e7c74e620bbf92e57711aca3c67f7e7f3bd"
+          }
+        },
+        {
+          "client_id": "39825301196-s10ds2prg3orncbmsot66aadkg162hl6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cwo.ihouseEMS",
+            "certificate_hash": "33cbc4e41aa157c271791bf81240a910de249a79"
+          }
+        },
+        {
+          "client_id": "39825301196-v7qgi06dj513tkoosvrfqe61ip7djfgt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cwo.ihouseEMS",
+            "certificate_hash": "407783e23c37a4cf86baa792684b9e83db725a74"
+          }
+        },
+        {
+          "client_id": "39825301196-35anfjdd48gqjo0ri91imsfd112vhete.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATcK0nbEu8zIRMuAVW_0dvHM_IwvZKSB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39825301196-35anfjdd48gqjo0ri91imsfd112vhete.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "39825301196-9q7pcb7gkooeiobg7mgm4acobueb8aqf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cwo.ihouseEMS",
+                "app_store_id": "6497169348"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
