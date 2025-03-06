@@ -1,5 +1,29 @@
+import 'package:ems_app/data/apiResponse/userInfo/UserInfoResponse.dart';
 import 'package:ems_app/resources/app_resources.dart';
 import 'package:fl_chart/fl_chart.dart';
+
+String googleLoginToken = "1fdsf6ds5f1ds65f1ds3f2ds1f65ds1f";
+
+final googleUserInfoResponse = UserInfoResponse(
+  result: 0,
+  data: UserInfoData(
+    uid: "26ad5496-372c-4ae5-b3fd-36955fdde2d4",
+    account: "googleLoginTest@gmail.com",
+    name: "GOOGLE登入測試名稱",
+    org: null,
+    accountType: 2,
+    attrs: {
+      "avatar": "d26a0f0c-b87f-444d-8817-2aa7a38ef4b3",
+    },
+    groups: [],
+    pushInfo: {
+      "fcm2": {
+        "token": "dq9t4GaBRZ2lUVdoSpWFev:APA91bHCp60ubra7jYnGGEd57DVaBkLvJqB2m0vDCgflKJJr2nk5fVKldMVO7sIxzHNDjUiiVUuZ6cimm8RKqLyO1g4YO-go1biXk_CmdEuLjMwfrHLqv8k",
+        "status": 0,
+      }
+    },
+  ),
+);
 
 List<String> departmentDataList = [
   "全部",

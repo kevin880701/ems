@@ -1,4 +1,5 @@
 
+import 'package:ems_app/data/fakeData/FakeData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -58,23 +59,29 @@ class AccountViewModel extends ChangeNotifier {
   }
 
   Future<int> googleSignIn() async {
-    var userCredential = await accountRepository.googleSignIn();
-    if (userCredential != null) {
-      var isFirstLogin = await accountRepository.googleCheck(userCredential!.user!.uid);
-      var isSuccessLogin = await accountRepository.googleLogin(userCredential);
-      if (isSuccessLogin) {
-        await getUserInfo().then((value) async {
-          await accountRepository.pushInfoSet();
-          if (!isFirstLogin && (userCredential!.user!.photoURL != null)) {
-            await uploadAvatar(await getImageFileFromUrl(userCredential!.user!.photoURL!));
-          }
-        });
-        return (isFirstLogin) ? 0 : 1;
-      } else {
-        return 2;
+    if(!(await SharedPreferencesManager.instance.getIsFakerData())){
+      var userCredential = await accountRepository.googleSignIn();
+      if (userCredential != null) {
+        var isFirstLogin = await accountRepository.googleCheck(userCredential!.user!.uid);
+        var isSuccessLogin = await accountRepository.googleLogin(userCredential);
+        if (isSuccessLogin) {
+          await getUserInfo().then((value) async {
+            await accountRepository.pushInfoSet();
+            if (!isFirstLogin && (userCredential!.user!.photoURL != null)) {
+              await uploadAvatar(await getImageFileFromUrl(userCredential!.user!.photoURL!));
+            }
+          });
+          return (isFirstLogin) ? 0 : 1;
+        } else {
+          return 2;
+        }
       }
+      return 2;
+    }else{
+      accountRepository.token = googleLoginToken;
+      accountRepository.userInfo = googleUserInfoResponse.data;
+      return 0;
     }
-    return 2;
   }
 
   Future<int> appleIDSignIn() async {
