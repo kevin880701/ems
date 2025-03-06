@@ -1,6 +1,15 @@
+import 'dart:math';
+
+import 'package:ems_app/data/apiResponse/attrs/Attrs.dart';
+import 'package:ems_app/data/apiResponse/deviceList/DeviceListResponse.dart';
+import 'package:ems_app/data/apiResponse/energyListData/EnergyListData.dart';
+import 'package:ems_app/data/apiResponse/node/Node.dart';
 import 'package:ems_app/data/apiResponse/userInfo/UserInfoResponse.dart';
+import 'package:ems_app/data/apiResponse/vals/Vals.dart';
+import 'package:ems_app/define.dart';
 import 'package:ems_app/resources/app_resources.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:intl/intl.dart';
 
 String googleLoginToken = "1fdsf6ds5f1ds65f1ds3f2ds1f65ds1f";
 
@@ -24,6 +33,161 @@ final googleUserInfoResponse = UserInfoResponse(
     },
   ),
 );
+
+List<DeviceListData> testDeviceListData = [
+  DeviceListData(
+    id: "e9a984a1-2b2d-45dc-afcc-91b389d45e4d",
+    parent: null,
+    devId: "404CCA4C89A0",
+    name: "TEST儲能櫃1",
+    modelId: 2,
+    modelName: "",
+    owner: null,
+    activeappid: 0,
+    status: 0,
+    profiles: [],
+    attrs: Attrs(
+      timezone: "Asia/Taipei(GMT+08:00)",
+      timezoneVal: "+28800",
+      belongUnit: "TEST大樓1",
+    ),
+    vals: generateRandomVals(),
+  ),
+  DeviceListData(
+    id: "a7b23cd4-5f67-8a90-bcde-123456789012",
+    parent: null,
+    devId: "AABBCCDDEEFF",
+    name: "TEST儲能櫃2",
+    modelId: 3,
+    modelName: "",
+    owner: null,
+    activeappid: 0,
+    status: 1,
+    profiles: [],
+    attrs: Attrs(
+      timezone: "Asia/Taipei(GMT+08:00)",
+      timezoneVal: "+28800",
+      belongUnit: "TEST大樓2",
+    ),
+    vals: generateRandomVals(),
+  ),
+  DeviceListData(
+    id: "f1e2d3c4-b5a6-7890-1234-56789abcdef0",
+    parent: null,
+    devId: "112233445566",
+    name: "TEST儲能櫃3",
+    modelId: 4,
+    modelName: "",
+    owner: null,
+    activeappid: 0,
+    status: 1,
+    profiles: [],
+    attrs: Attrs(
+      timezone: "Asia/Taipei(GMT+08:00)",
+      timezoneVal: "+28800",
+      belongUnit: "TEST大樓3",
+    ),
+    vals: generateRandomVals(),
+  ),
+];
+
+
+Vals generateRandomVals() {
+  return Vals(
+    info3472: "有1電池",
+    info3441: "1",
+    hb3450: getRandomNumber(0, 100).toString(),
+    l2_3457: getRandomNumber(0, 100).toString(),
+    reqAndInfo3444B8: getRandomNumber(0, 1).toString(),
+    reqAndInfo3444B9: getRandomNumber(0, 1).toString(),
+    l2_3449: getRandomNumber(20, 50).toString(),
+    l2_3460: getRandomNumber(20.0, 50.0).toString(),
+    info3516: "有2電池",
+    info3485: "2",
+    hb3494: getRandomNumber(0, 100).toString(),
+    l2_3501: getRandomNumber(0, 100).toString(),
+    reqAndInfo3488B8: getRandomNumber(0, 1).toString(),
+    reqAndInfo3488B9: getRandomNumber(0, 1).toString(),
+    l2_3493: getRandomNumber(20, 50).toString(),
+    l2_3504: getRandomNumber(20.0, 50.0).toString(),
+    info3604: "有3電池",
+    info3529: "3",
+    hb3538: getRandomNumber(0, 100).toString(),
+    l2_3545: getRandomNumber(0, 100).toString(),
+    reqAndInfo3532B8: getRandomNumber(0, 1).toString(),
+    reqAndInfo3532B9: getRandomNumber(0, 1).toString(),
+    l2_3537: getRandomNumber(20, 50).toString(),
+    l2_3548: getRandomNumber(20.0, 50.0).toString(),
+    info3560: "有4電池",
+    info3573: "4",
+    hb3582: getRandomNumber(0, 100).toString(),
+    l2_3589: getRandomNumber(0, 100).toString(),
+    reqAndInfo3576B8: getRandomNumber(0, 1).toString(),
+    reqAndInfo3576B9: getRandomNumber(0, 1).toString(),
+    l2_3581: getRandomNumber(20, 50).toString(),
+    l2_3592: getRandomNumber(20.0, 50.0).toString(),
+    brBattery: getRandomNumber(0, 100).toString(), // 圖表電池電量
+    reqAndInfo3160: "1100113014302130",
+    reqAndInfo3168: "0000000000000000",
+    reqAndInfo3318: "2330",
+    hb3445: "52.57",
+    hb3455: "104.1",
+    hb3489: "52.57",
+    hb3499: "105.0",
+    hb3533: "0.00",
+    hb3543: "0.0",
+    hb3577: "0.00",
+    hb3587: "0.0",
+    l13036: getRandomNumber(0.0, 100.0).toString(),
+    pKwhMonth: getRandomNumber(0.0, 100.0).toString(),
+    l33039: getRandomNumber(0.0, 100.0).toString(),
+    reqAndInfo3044: "0",
+  );
+}
+
+
+
+Future<EnergyListData> getTestChartData(
+    String startTime, String endTime, List<String> fields, int interval) async {
+  DateTime startDate = DateTime.parse(startTime);
+  DateTime endDate = DateTime.parse(endTime);
+  Duration step;
+  Random random = Random();
+
+  if (interval == 2) {
+    step = Duration(hours: 1); // 每小時
+  } else if (interval == 3) {
+    step = Duration(days: 1); // 每天
+  } else if (interval == 4) {
+    // 特殊處理，固定到該月 1 號
+    step = Duration(days: 30); // 這行其實不會用到，因為會直接設 1 號
+  } else {
+    throw ArgumentError('Invalid interval value');
+  }
+
+  List<EnergyData> energyList = [];
+  DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+
+  DateTime current = startDate;
+  while (current.isBefore(endDate) || current.isAtSameMomentAs(endDate)) {
+    energyList.add(EnergyData(
+      time: formatter.format(current),
+      titleList: fields,
+      valueList: fields.map((_) => random.nextDouble() * 100).toList(),
+    ));
+
+    if (interval == 4) {
+      // 每月固定到 1 號
+      current = DateTime(current.year, current.month + 1, 1, 0, 0, 0);
+    } else {
+      current = current.add(step);
+    }
+  }
+
+  await Future.delayed(Duration(seconds: 1));
+  return EnergyListData(energyList: energyList);
+}
+
 
 List<String> departmentDataList = [
   "全部",

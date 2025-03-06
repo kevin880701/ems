@@ -1,5 +1,7 @@
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'screen/BasePageState.dart';
+import 'dart:math';
+
 import 'package:ems_app/data/Params.dart';
 import 'package:ems_app/resources/app_colors.dart';
 import 'package:ems_app/resources/app_texts.dart';
@@ -738,4 +740,27 @@ Tuple2<int, int> findClosestTimeIndex(String? startTime, String? endTime) {
   }
 
   return Tuple2(startIndex, endIndex);
+}
+
+int getRandomInt(int min, int max) {
+  if (min > max) {
+    throw ArgumentError('min 必須小於等於 max');
+  }
+  Random random = Random();
+  return min + random.nextInt(max - min + 1);
+}
+
+num getRandomNumber(num min, num max, {int decimalPlaces = 1}) {
+  if (min > max) {
+    throw ArgumentError('min 必須小於等於 max');
+  }
+  Random random = Random();
+
+  if (min is int && max is int) {
+    return min + random.nextInt(max - min + 1); // 產生整數
+  } else {
+    double rawValue = min + random.nextDouble() * (max - min); // 產生浮點數
+    double factor = pow(10, decimalPlaces).toDouble(); // 計算 10^decimalPlaces
+    return (rawValue * factor).round() / factor; // 四捨五入到指定小數位數
+  }
 }

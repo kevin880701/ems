@@ -172,10 +172,10 @@ class _EnergyStoragePageState extends BasePageState<EnergyStoragePage> with Auto
                                         '',
                                     monthPower: energyStorageViewModel
                                             .deviceList[energyStorageViewModel.deviceListIndex].vals?.pKwhMonth ??
-                                        '',
+                                        ' － ',
                                     yearPower: energyStorageViewModel
                                             .deviceList[energyStorageViewModel.deviceListIndex].vals?.l33039 ??
-                                        '',
+                                        ' － ',
                                   ),SizedBox(height: 16.0,),
                                   if (energyStorageViewModel.batteryInformation != null)
                                     Column(

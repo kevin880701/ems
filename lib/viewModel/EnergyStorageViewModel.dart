@@ -1,6 +1,9 @@
 import 'package:ems_app/data/apiResponse/deviceList/DeviceListResponse.dart';
 import 'package:ems_app/data/apiResponse/energyListData/EnergyListData.dart';
+import 'package:ems_app/data/fakeData/FakeData.dart';
 import 'package:ems_app/repository/AccountRepository.dart';
+import 'package:ems_app/utils/AppLog.dart';
+import 'package:ems_app/utils/sharedPreferences/SharedPreferencesManager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tuple/tuple.dart';
 import '../data/DeviceQrData.dart';
@@ -82,23 +85,22 @@ class EnergyStorageViewModel extends ChangeNotifier {
     if (deviceList.isNotEmpty && deviceListIndex != -1) {
       tempDevId = deviceList[deviceListIndex].devId;
     }
-    await energyStorageRepository.getDeviceList().then((list) {
-      List<DeviceListData> deviceListDataList = List.of(list);
-      deviceListDataList.sort((a, b) => a.name.compareTo(b.name));
-      deviceList = deviceListDataList;
-      if (deviceList.isNotEmpty) {
-        // 暫時用來判斷是否為儲能櫃擁有者
-        energyStorageRepository.listUserPermissions();
-        // 查詢之前暫存devId是否存在，沒有的話給0
-        deviceListIndex = deviceList.indexWhere((device) => device.devId == tempDevId);
-        // 如果找到了符合條件的元素，返回它的索引，否則返回 -1
-        deviceListIndex = deviceListIndex == -1 ? 0 : deviceListIndex;
-        batteryInformation = deviceList[deviceListIndex];
-        deviceId = deviceList[deviceListIndex].devId;
-        energyStorageId = deviceList[deviceListIndex].id;
-      }
-      notifyListeners();
-    });
+    final newDeviceList = await energyStorageRepository.getDeviceList();
+    List<DeviceListData> deviceListDataList = List.of(newDeviceList);
+    deviceListDataList.sort((a, b) => a.name.compareTo(b.name));
+    deviceList = deviceListDataList;
+    if (deviceList.isNotEmpty) {
+      // 暫時用來判斷是否為儲能櫃擁有者
+      energyStorageRepository.listUserPermissions();
+      // 查詢之前暫存devId是否存在，沒有的話給0
+      deviceListIndex = deviceList.indexWhere((device) => device.devId == tempDevId);
+      // 如果找到了符合條件的元素，返回它的索引，否則返回 -1
+      deviceListIndex = deviceListIndex == -1 ? 0 : deviceListIndex;
+      batteryInformation = deviceList[deviceListIndex];
+      deviceId = deviceList[deviceListIndex].devId;
+      energyStorageId = deviceList[deviceListIndex].id;
+    }
+    notifyListeners();
   }
 
   Future<bool> registerDevice(DeviceQrData deviceQrData) async {

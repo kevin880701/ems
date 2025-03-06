@@ -6,7 +6,9 @@ import 'package:ems_app/data/apiResponse/deviceList/DeviceListResponse.dart';
 import 'package:ems_app/data/apiResponse/energyListData/EnergyListData.dart';
 import 'package:ems_app/data/apiResponse/listUserPermissions/ListUserPermissionsResponse.dart';
 import 'package:ems_app/net/remote/NetworkInterface.dart';
+import 'package:ems_app/utils/sharedPreferences/SharedPreferencesManager.dart';
 import '../data/apiRequest/listUserPermissions/ListUserPermissionsParams.dart';
+import '../data/fakeData/FakeData.dart';
 import '../net/remote/Managers/WebManager.dart';
 import 'AccountRepository.dart';
 
@@ -31,7 +33,13 @@ class EnergyStorageRepository {
     List<String> fields,
     int interval,
   ) async {
-    return webManager.getChartData(
+    return (!(await SharedPreferencesManager.instance.getIsFakerData()))?
+    await webManager.getChartData(
+      startTime,
+      endTime,
+      fields,
+      interval,
+    ):getTestChartData(
       startTime,
       endTime,
       fields,
@@ -40,7 +48,8 @@ class EnergyStorageRepository {
   }
 
   Future<List<DeviceListData>> getDeviceList() async {
-    return await webManager.getDeviceList();
+    return
+      (!(await SharedPreferencesManager.instance.getIsFakerData()))?await webManager.getDeviceList():testDeviceListData;;
   }
 
   Future<AddDeviceData?> addDevice(
