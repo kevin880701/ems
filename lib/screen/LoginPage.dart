@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:ems_app/define.dart';
 import 'package:ems_app/resources/app_colors.dart';
 import 'package:ems_app/resources/app_resources.dart';
+import 'package:ems_app/utils/sharedPreferences/SharedPreferencesManager.dart';
 import 'package:ems_app/utils/widgets/login/ThirdPartyButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,14 @@ class _LoginPageState extends BasePageState<LoginPage> with WidgetsBindingObserv
                   Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.fromLTRB(0, 96.sp, 0, 28.sp),
-                    child: SizedBox(width: 144.w, height: 36.h, child: getImage('ihouse_banner.png')),
+                    child: GestureDetector(
+                      onTap: () async {
+                      SharedPreferencesManager.instance.setIsFakerData(!(await SharedPreferencesManager.instance.getIsFakerData()));
+                      showToast(context: context,
+                          text: (await SharedPreferencesManager.instance.getIsFakerData())
+                              ?"啟動測試資料":"關閉測試資料");
+                      },
+                      child: SizedBox(width: 144.w, height: 36.h, child: getImage('ihouse_banner.png')),),
                   ),
                   thirdPartyButton(context,
                       logo: 'google_icon.png',

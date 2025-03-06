@@ -28,4 +28,16 @@ class SharedPreferencesManager {
     final prefs = await _prefs;
     return prefs.getString("token");
   }
+
+  /// 設定是否為 Faker Data
+  Future<void> setIsFakerData(bool value) async {
+    final prefs = await _prefs;
+    await prefs.setBool("isFakerData", value);
+  }
+
+  /// 取得是否為 Faker Data，若未設定則回傳 false
+  Future<bool> getIsFakerData() async {
+    final prefs = await _prefs;
+    return prefs.getBool("isFakerData") ?? false;
+  }
 }
