@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:ems_app/define.dart';
+import 'package:ems_app/screen/dashboard/DashboardPage.dart';
 import 'package:ems_app/screen/personal/PersonalPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -33,7 +34,7 @@ class _MainPageState extends BasePageState<MainPage> with TickerProviderStateMix
   var accountViewModel = AccountViewModel.instance;
   late final TabController _tabController;
   int tabSelectedIndex = 0; // Tab索引
-  int tabQuantity = 2; // Tab數量
+  int tabQuantity = 3; // Tab數量
 
   @override
   void initState() {
@@ -64,7 +65,7 @@ class _MainPageState extends BasePageState<MainPage> with TickerProviderStateMix
             controller: _tabController,
             children: const <Widget>[
               EnergyStoragePage(),
-              // NotificationPage(),  // 本次驗收不需要，先註解
+              DashboardPage(),
               PersonalPage(),
             ],
           )),
@@ -83,14 +84,14 @@ class _MainPageState extends BasePageState<MainPage> with TickerProviderStateMix
                       : getImageIcon('energy_storage.png', width: 24.sp, height: 24.sp, color: AppColors.grey),
                   text: AppTexts.energyStorage,
                 ),
-                // Tab(  // 本次驗收不需要，先註解
-                //   icon: tabSelectedIndex == 1
-                //       ? getImageIcon('notifications_click.png', width: 24.sp, height: 24.sp, color: AppColors.white)
-                //       : getImageIcon('notifications.png', width: 24.sp, height: 24.sp, color: AppColors.grey),
-                //   text: AppTexts.notification,
-                // ),
                 Tab(
                   icon: tabSelectedIndex == 1
+                      ? getImageIcon('dashboard_click.png', width: 24.sp, height: 24.sp, color: AppColors.white)
+                      : getImageIcon('dashboard.png', width: 24.sp, height: 24.sp, color: AppColors.grey),
+                  text: AppTexts.dashboard,
+                ),
+                Tab(
+                  icon: tabSelectedIndex == 2
                       ? getImageIcon('personal_click.png', width: 24.sp, height: 24.sp, color: AppColors.white)
                       : getImageIcon('personal.png', width: 24.sp, height: 24.sp, color: AppColors.grey),
                   text: AppTexts.personal,

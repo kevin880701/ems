@@ -45,6 +45,7 @@ class AppTexts {
 
   // bottom navigation bar
   static const energyStorage = '儲能櫃';
+  static const dashboard = '儀表版';
   static const notification = '通知';
   static const personal = '個人';
 
