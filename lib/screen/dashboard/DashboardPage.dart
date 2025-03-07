@@ -157,7 +157,7 @@ class _DashboardPageState extends BasePageState<DashboardPage> with AutomaticKee
                                     yearPower: energyStorageViewModel
                                         .deviceList[energyStorageViewModel.deviceListIndex].vals?.l33039 ??
                                         ' － ',
-                                  )
+                                  ),
                                 ],
                               ),
                             ))))
