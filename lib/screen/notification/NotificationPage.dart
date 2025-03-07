@@ -3,6 +3,7 @@ import 'package:ems_app/define.dart';
 import 'package:ems_app/resources/app_resources.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../data/fakeData/FakeData.dart';
 import '../../utils/dialog/DialogManager.dart';
 import '../../utils/dialog/window/SearchFilterDialog.dart';
@@ -36,6 +37,12 @@ class _NotificationPageState extends BasePageState<NotificationPage> with Automa
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: AppColors.white,
+        toolbarHeight: 0.0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      ),
       backgroundColor: AppColors.bgColor,
       body: SafeArea(
           child: Column(children: [
