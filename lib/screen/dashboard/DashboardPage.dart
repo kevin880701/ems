@@ -3,6 +3,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:ems_app/data/apiResponse/deviceList/DeviceListResponse.dart';
 import 'package:ems_app/define.dart';
+import 'package:ems_app/utils/widgets/chart/BaselineWidget.dart';
 import 'package:ems_app/viewModel/SettingViewModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -123,7 +124,22 @@ class _DashboardPageState extends BasePageState<DashboardPage> with AutomaticKee
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-
+                                  BaselineWidget(
+                                    title:
+                                    energyStorageViewModel.deviceList[energyStorageViewModel.deviceListIndex].name,
+                                    devid:
+                                    energyStorageViewModel.deviceList[energyStorageViewModel.deviceListIndex].devId,
+                                    subTitle: "能源資訊",
+                                    dayPower: energyStorageViewModel
+                                        .deviceList[energyStorageViewModel.deviceListIndex].vals?.l13036 ??
+                                        '',
+                                    monthPower: energyStorageViewModel
+                                        .deviceList[energyStorageViewModel.deviceListIndex].vals?.pKwhMonth ??
+                                        ' － ',
+                                    yearPower: energyStorageViewModel
+                                        .deviceList[energyStorageViewModel.deviceListIndex].vals?.l33039 ??
+                                        ' － ',
+                                  )
                                 ],
                               ),
                             ))))

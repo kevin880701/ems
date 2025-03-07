@@ -91,8 +91,7 @@ class _BaselinePieChartState extends State<BaselinePieChart> {
             pointers: pointers,
             annotations: <GaugeAnnotation>[
               GaugeAnnotation(
-                  widget: Center(child: getImage(widget.icon, height: 24.sp, width: 24.sp)),
-                  positionFactor: 0.1,
+                  widget: Center(child: getImage(widget.icon, height: 24, width: 24)),
                   angle: 0)
             ])
       ]),
