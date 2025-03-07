@@ -4,8 +4,8 @@ import 'package:ems_app/define.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../resources/app_colors.dart';
-import '../Indicator.dart';
+import '../../../../resources/app_colors.dart';
+import '../../Indicator.dart';
 
 class SymmetricBarChart extends StatefulWidget {
   const SymmetricBarChart(
