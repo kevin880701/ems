@@ -1,7 +1,7 @@
 # 📱 iHouse EMS
 
 ## 🚀 簡介
-**iHouse EMS** 是一款基於 Flutter 開發的能源管理系統（Energy Management System，EMS），支援 Android 和 iOS，幫助用戶監控與管理能源消耗。
+**EMS** 是一款基於 Flutter 開發的能源管理系統（Energy Management System，EMS），支援 Android 和 iOS，幫助用戶監控與管理能源消耗。
 
 ### 主要功能：
 - **設備監控**：即時監測能源設備的狀態與數據

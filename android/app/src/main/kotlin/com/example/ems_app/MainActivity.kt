@@ -1,4 +1,4 @@
-package com.cwo.ihouseEMS
+package com.lhr.ems
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity
