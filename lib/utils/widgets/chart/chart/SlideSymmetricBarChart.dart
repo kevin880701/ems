@@ -46,8 +46,11 @@ class _SlideSymmetricBarChartState extends State<SlideSymmetricBarChart> {
     List<EnergyListData> segments = [];
     List<EnergyData> data = energyDataList.energyList;
 
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+    print('data.length:${data.length}');
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
     // 分割資料為 3 段
-    if (data.length == 24) {
+    if (data.length == 24 || data.length == 25) {
       segments.add(EnergyListData(energyList: data.sublist(0, 8)));
       segments.add(EnergyListData(energyList: data.sublist(8, 16)));
       segments.add(EnergyListData(energyList: data.sublist(16, 24)));
@@ -57,7 +60,7 @@ class _SlideSymmetricBarChartState extends State<SlideSymmetricBarChart> {
 
   @override
   Widget build(BuildContext context) {
-    bool isPageView = widget.energyDataList.energyList.length == 24;
+    bool isPageView = (widget.energyDataList.energyList.length == 24) || (widget.energyDataList.energyList.length == 25);
     return Container(
       height: widget.height,
       child: isPageView
