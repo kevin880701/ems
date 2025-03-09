@@ -9,6 +9,8 @@
 - **警報通知**：當設備異常時，自動發送提醒
 - **遠端控制**：允許用戶透過應用遠端控制設備
 
+
+![GIF Demo](https://github.com/kevin880701/ems_app_shou/blob/main/sample.gif)
 ---
 
 ## 📦 環境需求
