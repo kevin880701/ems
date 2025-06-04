@@ -67,7 +67,7 @@ class BaselineBarChartState extends State<BaselineBarChart> {
     }
 
     return SideTitleWidget(
-      axisSide: meta.axisSide,
+      meta: meta,
       child: getText(text, fontSize: 10.sp, color: AppColors.primaryBlack),
     );
   }
@@ -248,7 +248,6 @@ class BaselineBarChartState extends State<BaselineBarChart> {
                                 enabled: true,
                                 handleBuiltInTouches: false,
                                 touchTooltipData: LineTouchTooltipData(
-                                  tooltipBgColor: AppColors.milkOrange,
                                   getTooltipItems:
                                       (List<LineBarSpot> touchedBarSpots) {
                                     return touchedBarSpots.map((barSpot) {

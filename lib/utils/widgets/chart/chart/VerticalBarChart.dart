@@ -68,7 +68,7 @@ class VerticalBarChartState extends State<VerticalBarChart> {
     }
 
     return SideTitleWidget(
-      axisSide: meta.axisSide,
+      meta: meta,
       child: getText(text, fontSize: 10.sp, color: AppColors.primaryBlack),
     );
   }
@@ -191,7 +191,7 @@ class VerticalBarChartState extends State<VerticalBarChart> {
                                 maxY: maxYValue,
                                 alignment: BarChartAlignment.start,
                                 barTouchData: BarTouchData(
-                                  touchTooltipData: BarTouchTooltipData(tooltipBgColor: AppColors.milkOrange,
+                                  touchTooltipData: BarTouchTooltipData(
                                     getTooltipItem:
                                         (group, groupIndex, rod, rodIndex) {
                                       return null;

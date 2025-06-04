@@ -90,14 +90,14 @@ class _SymmetricBarChartState extends State<SymmetricBarChart> {
     }
 
     return SideTitleWidget(
-      axisSide: meta.axisSide,
+      meta: meta,
       child: getText(text, fontSize: 10.sp, color: AppColors.primaryBlack),
     );
   }
 
   Widget leftTitles(double value, TitleMeta meta) {
     return SideTitleWidget(
-      axisSide: meta.axisSide,
+      meta: meta,
       space: 0,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 4.0),
@@ -215,7 +215,6 @@ class _SymmetricBarChartState extends State<SymmetricBarChart> {
                       groupsSpace: barsSpace,
                       barTouchData: BarTouchData(
                         touchTooltipData: BarTouchTooltipData(
-                          tooltipBgColor: AppColors.milkOrange,
                           getTooltipItem: (group, groupIndex, rod, rodIndex) {
                             return null;
                           },

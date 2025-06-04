@@ -22,19 +22,19 @@ BuildContext? get appContext => navigatorKey.currentContext;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   // await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
 
   // Pass all uncaught "fatal" errors from the framework to Crashlytics
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
-  FirebaseAuth.instance.authStateChanges().listen((User? user) {
-    if (user == null) {
-      print('User is currently signed out!');
-    } else {
-      print('User is signed in!');
-    }
-  });
+  // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  //
+  // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+  //   if (user == null) {
+  //     print('User is currently signed out!');
+  //   } else {
+  //     print('User is signed in!');
+  //   }
+  // });
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);

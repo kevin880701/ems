@@ -51,7 +51,7 @@ dependencies:
   syncfusion_flutter_core: ^27.1.51
   syncfusion_flutter_sliders: ^27.1.51
   syncfusion_flutter_datepicker: ^27.1.51
-  fl_chart: ^0.66.2
+  fl_chart: ^1.0.0
   webview_flutter: ^4.10.0
   mockito: ^5.4.4
   tuple: ^2.0.2
